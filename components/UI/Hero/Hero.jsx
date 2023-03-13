@@ -1,8 +1,10 @@
 import React from "react";
 // import "../../styles/hero.scss";
-import Container from "@mui/material/Container";
+
 import Box from "@mui/material/Box";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Container } from "@mui/material";
+import json2mq from "json2mq";
+import useMediaQuery from "@mui/material/useMediaQuery";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 // export async function getStaticProps({ locale }) {
 //   console.log(locale);
@@ -15,22 +17,22 @@ import { Button, Grid } from "@mui/material";
 // }
 
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 const Hero = (props) => {
   // console.log(props);
   const { t: translate } = useTranslation("home");
-
+  const matchesMedium = useMediaQuery(
+    json2mq({
+      minWidth: 768,
+    })
+  );
+  console.log(matchesMedium);
   return (
     <section className={"hero_section"}>
       {" "}
-      <Container>
-        <Grid
-          justifyContent="center"
-          alignItems="center"
-          sx={{ height: "100%" }}
-          container
-          spacing={2}
-        >
-          <Grid sx={{ height: "100%" }} item lg={6}>
+      <Container maxWidth="lg">
+        <Grid sx={{ height: "100%" }} container spacing={2}>
+          <Grid sx={{ height: "100%" }} item lg={6} >
             <Box className="hero__left">
               <h1 className="hero__left_title">
                 <span>{translate("home.hero.title.Unlock")}</span>{" "}
@@ -48,18 +50,34 @@ const Hero = (props) => {
               </Button>
             </Box>
           </Grid>
-          <Grid item lg={6}></Grid>
+          <Grid item lg={6} >
+            {" "}
+            {matchesMedium && (
+              <Box className="hero__right">
+                <Image
+                  layout="fill"
+                  // width={1000}
+                  // height={1000}
+                  alt="home_1"
+                  src={"/home_1.jpg"}
+                  className={"home_img"}
+                ></Image>
+              </Box>
+            )}
+          </Grid>
         </Grid>{" "}
       </Container>
-      <Box className="hero__right">
-        <img
-          layout="fill"
-          // width={1000}
-          // height={1000}
-          src={"/home_1.jpg"}
-          className={"home_img"}
-        ></img>
-      </Box>
+      {/* {!matchesMedium && (
+        <Box className="hero__right">
+          <img
+            layout="fill"
+            // width={1000}
+            // height={1000}
+            src={"/home_1.jpg"}
+            className={"home_img"}
+          ></img>
+        </Box>
+      )} */}
     </section>
   );
 };

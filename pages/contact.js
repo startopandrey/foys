@@ -1,10 +1,19 @@
-import { Alert, Box, Button, Grid, Snackbar, TextField } from "@mui/material";
-import { Container } from "@mui/system";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Typography,
+  TextField,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import React, { useState } from "react";
-import { useTranslation } from "next-i18next";
-import SaveIcon from "@mui/icons-material/Save";
 import LoadingButton from "@mui/lab/LoadingButton";
-const HomeContact = () => {
+import SaveIcon from "@mui/icons-material/Save";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+const Contact = (props) => {
   const { t: translate } = useTranslation("home");
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(false);
@@ -66,8 +75,9 @@ const HomeContact = () => {
   };
 
   return (
-    <section className="home_contact">
-         <Snackbar
+    <div className="contact">
+      {" "}
+      <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={open}
         autoHideDuration={6000}
@@ -77,14 +87,11 @@ const HomeContact = () => {
           Email has been sent!
         </Alert>
       </Snackbar>
-      <Box className="video_container">
-        <Container></Container>
-      </Box>
-      <Box className="home_contact_container">
+      <Box className="contact_container">
         <Container>
           {" "}
           <Grid sx={{ display: "flex" }} container spacing={10}>
-            <Grid item md={12} lg={6}>
+            <Grid item lg={6}>
               <Box
                 sx={{
                   display: "flex",
@@ -94,8 +101,8 @@ const HomeContact = () => {
                 spacing={4}
               >
                 <Box className="header">
-                  <h3>{translate("home.contact.header.title")}</h3>
-                  <h1>{translate("home.contact.header.description")}</h1>
+                  <h3>Start Your Project With Us.</h3>
+                  <h1>Let&apos;s Talk</h1>
                 </Box>
 
                 <Grid container spacing={2}>
@@ -189,12 +196,12 @@ const HomeContact = () => {
                 </Button>
               )}
             </Grid>
-            <Grid item md={12} lg={6}>
+            <Grid item lg={6}>
               <Box className="home_contact_address">
                 <Box className={"address_item"}>
                   <h3 className={"address_item_title"}>Address :</h3>
                   <h3 className={"address_item_content"}>
-                  Franz-Josef-pl. 10, 6330 Kufstein, Austia
+                    Franz-Josef-pl. 10, 6330 Kufstein, Austria
                   </h3>
                 </Box>
                 <Box className={"address_item"}>
@@ -210,10 +217,34 @@ const HomeContact = () => {
               </Box>
             </Grid>
           </Grid>
-        </Container>
-      </Box>
-    </section>
+        </Container>{" "}
+      </Box>{" "}
+      <div style={{ width: "100%" }}>
+        <iframe
+          width="100%"
+          height="600"
+          frameBorder="0"
+          scrolling="no"
+          marginHeight="0"
+          marginWidth="0"
+          src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Kufstien+(My%20Business%20Name)&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+        >
+          <a href="https://www.maps.ie/distance-area-calculator.html">
+            distance maps
+          </a>
+        </iframe>
+      </div>
+    </div>
   );
 };
 
-export default HomeContact;
+export async function getStaticProps({ locale }) {
+  console.log(locale);
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["home"])),
+      // Will be passed to the page component as props
+    },
+  };
+}
+export default Contact;

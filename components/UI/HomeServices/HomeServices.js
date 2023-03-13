@@ -3,8 +3,10 @@ import { Container } from "@mui/system";
 import Image from "next/image";
 import React from "react";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 const HomeServices = () => {
   const { t: translate } = useTranslation("home");
+  const router = useRouter()
   return (
     <section className="home_services">
       <Container>
@@ -15,12 +17,12 @@ const HomeServices = () => {
           container
           spacing={8}
         >
-          <Grid sx={{ height: "100%" }} item lg={6}>
+          <Grid order={{  xs: 2, sm: 1 }}  sx={{ height: "100%" }} item md={6} lg={6}>
             <Box className="services__left">
-              <img src={"/graph.png"}></img>
+              <Image alt="graph" src={"/graph.png"}></Image>
             </Box>
           </Grid>
-          <Grid item lg={6}>
+          <Grid order={{ xs: 1, sm: 2 }} item md={6} lg={6}>
             {" "}
             <Box className="header">
               <h3>{translate("home.services.left.header1.title")}</h3>
@@ -34,6 +36,7 @@ const HomeServices = () => {
               style={{ width: 180, marginTop: "1rem" }}
               size="large"
               variant="outlined"
+              onClick={()=> router.push("service")}
             >
               More Services
             </Button>
@@ -45,8 +48,9 @@ const HomeServices = () => {
           sx={{ height: "100%" }}
           container
           spacing={8}
+          
         >
-          <Grid sx={{ height: "100%" }} item lg={6}>
+          <Grid sx={{ height: "100%" }}  md={6} item lg={6}>
             {" "}
             <Box className="header">
               <h3>{translate("home.services.right.header1.title")}</h3>
@@ -64,14 +68,15 @@ const HomeServices = () => {
               style={{ width: 220, marginTop: "1rem" }}
               size="large"
               variant="outlined"
+              onClick={()=> router.push("service")}
             >
               {translate("button_more_services")}
             </Button>
           </Grid>
-          <Grid item lg={6}>
+          <Grid  md={6} item lg={6}>
             {" "}
             <Box className="services__left">
-              <img src={"/home_2.png"}></img>
+              <Image alt="home_2" src={"/home_2.png"}></Image>
             </Box>
           </Grid>{" "}
         </Grid>

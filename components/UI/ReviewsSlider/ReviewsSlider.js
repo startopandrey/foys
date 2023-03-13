@@ -17,30 +17,35 @@ const ReviewsSlider = () => {
   };
   const clientsReviews = [
     {
+      key: "1", 
       name: "Eilema Ilaif",
       role: "Manager",
       review:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     },
     {
+      key: "2", 
       name: "Eilema Ilaif",
       role: "Manager",
       review:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     },
     {
+      key: "3", 
       name: "Eilema Ilaif",
       role: "Manager",
       review:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     },
     {
+      key: "4", 
       name: "Eilema Ilaif",
       role: "Manager",
       review:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     },
     {
+      key: "5", 
       name: "Eilema Ilaif",
       role: "Manager",
       review:
@@ -58,7 +63,7 @@ const ReviewsSlider = () => {
       <div className="reviews_slider_container">
         <Slider {...settings}>
           {clientsReviews.map((review) => (
-            <Box className="review">
+            <Box key={review.key} className="review">
               <Avatar
                 alt={review.name}
                 sx={{ bgcolor: lightBlue[100], width: 50, height: 50 }}

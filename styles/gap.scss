@@ -14,6 +14,7 @@
     .gap_description {
       margin-bottom: 2rem;
       color: $light-gray;
+      text-align: center;
     }
     .clients {
       display: flex;
@@ -29,9 +30,63 @@
         margin: -1px;
         margin-bottom: 0px;
         .client_img {
-          object-fit: cover;
+          object-fit: contain;
           width: 100%;
-          height: 70px;
+          height: 100px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .gap {
+    margin-bottom: 3rem;
+    .gap_container {
+    
+      .clients {
+    
+  
+        .client_item {
+    
+          width: 50%;
+          padding: 40px;
+    
+          .client_img {
+            object-fit: contain;
+            width: 100%;
+            height: 90px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  .gap {
+    margin-bottom: 3rem;
+    .gap_container {
+
+      .gap__title {
+   
+        width: 100%;
+      }
+      .gap_description {
+        
+        margin-bottom: 2rem;
+        color: $light-gray;
+      }
+      .clients {
+      
+  
+        .client_item {
+
+          padding: 20px;
+     
+          .client_img {
+            object-fit: contain;
+            width: 100%;
+            height: 90px;
+          }
         }
       }
     }

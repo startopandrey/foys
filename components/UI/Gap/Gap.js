@@ -1,6 +1,7 @@
 import { Container } from "@mui/system";
 import React from "react";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 const clientsList = [
   { img: "https://www.warketolog.com/clients/Sharikava.svg" },
   { img: "https://www.warketolog.com/clients/BSK.svg" },
@@ -28,7 +29,7 @@ const Gap = () => {
         <ul className="clients">
           {clientsList.map((el, i) => (
             <li key={i} className="client_item">
-              <img className="client_img" src={el.img} alt="" />
+              <Image className="client_img" src={el.img} alt="" />
             </li>
           ))}
         </ul>

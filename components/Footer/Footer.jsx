@@ -10,19 +10,19 @@ const navLinks = [
     display: "Home",
   },
   {
-    path: "#about",
+    path: "/about",
     display: "About Us",
   },
   {
-    path: "#services",
+    path: "/service",
     display: "Services",
   },
   {
-    path: "#portfolio",
-    display: "Portfolio",
+    path: "/demo",
+    display: "Demo",
   },
   {
-    path: "#contact",
+    path: "/contact",
     display: "Contact",
   },
 ];
@@ -31,12 +31,12 @@ const Footer = () => {
   return (
     <footer className="footer">
       <Container>
-        <Grid container>
+        <Grid container spacing={4}>
           <Grid className="footer_header" lg={6} item>
             <h1>
               Thank you for <br /> your time
             </h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+            <p>How do construction workers party? They raise the roof.</p>
             <Box sx={{ display: "flex" }}>
               <Button
                 size={"large"}
